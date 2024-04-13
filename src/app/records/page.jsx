@@ -47,6 +47,7 @@ export default function Records() {
           maxPageValue={maxPage}
           entriesPerPage={entriesPerPage}
           totalEntries={totalEntries}
+          setEntriesPerPageCallback={setEntriesPerPage}
         />
       </div>
     </section>

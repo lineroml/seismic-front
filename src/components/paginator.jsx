@@ -4,6 +4,7 @@ export default function Paginator({
   maxPageValue,
   entriesPerPage,
   totalEntries,
+  setEntriesPerPageCallback,
 }) {
   return (
     <div className="flex flex-col items-center mt-5">
@@ -67,6 +68,20 @@ export default function Paginator({
             />
           </svg>
         </button>
+      </div>
+      <div className="flex items-center mt-2">
+        <label className="text-sm text-gray-700">Registros por página:</label>
+        <select
+          className="w-16 h-8 ms-2 text-sm text-gray-900 border-0 border-s border-gray-300 rounded-s"
+          value={entriesPerPage}
+          onChange={(e) => {
+            setEntriesPerPageCallback(e.target.value);
+          }}
+        >
+          <option value="9">9</option>
+          <option value="15">15</option>
+          <option value="30">30</option>
+        </select>
       </div>
     </div>
   );
