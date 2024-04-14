@@ -21,8 +21,27 @@ export default function Records() {
     );
     const data = await response.json();
     setData(data.data);
-    console.log(data);
     setTotalEntries(data.pagination.total);
+    const maxPage = Math.ceil(data.pagination.total / entriesPerPage);
+    setMaxPage(maxPage);
+    console.log(currentPage, maxPage);
+  };
+
+  const setPage = (page) => {
+    if (page < 1) {
+      setCurrentPage(1);
+    } else if (page > maxPage) {
+      return;
+    } else {
+      setCurrentPage(page);
+    }
+  };
+
+  const setMaxEntriesPerPage = (entriesPerPage) => {
+    setEntriesPerPage(entriesPerPage);
+    if (entriesPerPage * currentPage > totalEntries) {
+      setCurrentPage(Math.ceil(totalEntries / entriesPerPage));
+    }
   };
 
   useEffect(() => {
@@ -43,11 +62,12 @@ export default function Records() {
       <div className="mt-5">
         <Paginator
           currentPageValue={currentPage}
-          setPageCallback={setCurrentPage}
+          setPageCallback={setPage}
           maxPageValue={maxPage}
           entriesPerPage={entriesPerPage}
           totalEntries={totalEntries}
           setEntriesPerPageCallback={setEntriesPerPage}
+          loading={loading}
         />
       </div>
     </section>

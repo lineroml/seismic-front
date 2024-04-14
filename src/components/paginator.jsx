@@ -5,6 +5,7 @@ export default function Paginator({
   entriesPerPage,
   totalEntries,
   setEntriesPerPageCallback,
+  loading = false,
 }) {
   return (
     <div className="flex flex-col items-center mt-5">
@@ -15,7 +16,10 @@ export default function Paginator({
         </span>
         &nbsp;-&nbsp;
         <span className="font-semibold text-gray-900">
-          {currentPageValue * entriesPerPage}&nbsp;
+          {currentPageValue * entriesPerPage > totalEntries
+            ? totalEntries
+            : currentPageValue * entriesPerPage}
+          &nbsp;
         </span>
         de&nbsp;
         <span className="font-semibold text-gray-900">
@@ -25,6 +29,7 @@ export default function Paginator({
       </span>
       <div className="inline-flex mt-2 xs:mt-0">
         <button
+          disabled={currentPageValue === 1 || loading}
           className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-yellow-500 rounded-s hover:bg-yellow-900"
           onClick={() => {
             setPageCallback(currentPageValue - 1);
@@ -47,6 +52,7 @@ export default function Paginator({
           </svg>
         </button>
         <button
+          disabled={currentPageValue === maxPageValue || loading}
           className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-yellow-500 border-0 border-s border-yellow-700 rounded-e hover:bg-yellow-900"
           onClick={() => {
             setPageCallback(currentPageValue + 1);
@@ -81,6 +87,9 @@ export default function Paginator({
           <option value="9">9</option>
           <option value="15">15</option>
           <option value="30">30</option>
+          <option value="60">60</option>
+          <option value="90">90</option>
+          <option value="120">120</option>
         </select>
       </div>
     </div>
