@@ -57,10 +57,10 @@ export default function Records() {
 
   return (
     <section className="text-gray-600 body-font">
-      <form class="max-w-lg mx-auto">
+      <form className="max-w-lg mx-auto">
         <label
-          for="magtypes_multiple"
-          class="block mb-2 text-sm font-medium text-gray-900 text-center"
+          htmlFor="magtypes_multiple"
+          className="block mb-2 text-sm font-medium text-gray-900 text-center"
         >
           Filter by MagType (Hold Ctrl to select multiple)
         </label>
@@ -77,7 +77,7 @@ export default function Records() {
           }}
           multiple
           id="magtypes_multiple"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5"
         >
           <option value="any">Any/All</option>
           <option value="md">MD</option>

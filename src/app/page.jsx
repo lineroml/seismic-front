@@ -15,9 +15,7 @@ export default function Home() {
               href="records"
             >
               <span className="flex items-start flex-col leading-none">
-                <span className="title-font font-medium">
-                  Listar todos los sismos
-                </span>
+                <span className="title-font font-medium">List all records</span>
               </span>
             </a>
           </div>
